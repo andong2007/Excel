@@ -1,10 +1,12 @@
+Option Explicit
+
 Sub transform()
 'Target: transfer 2D data into 1D, regardless of the content of which the length is less than 2
 
 'Step1: initialization
-    Dim srcArea As Range, elem As Variant
+    Dim srcArea As Range, oneCell As Variant
     Set srcArea = Sheet1.Cells.CurrentRegion
-    Dim k!, emp$, dutyDate$, destination$
+    Dim k!, empName$, tripDate$, destination$
     
 'Step2: generate field name row of target table
     k = 2
@@ -19,8 +21,8 @@ Sub transform()
     For Each oneCell In srcArea
         If Len(Trim(oneCell.Value)) > 1 And oneCell.Row > 1 And oneCell.Column > 1 Then
             empName = Sheet1.Cells(oneCell.Row, 1).Value
-            tripDate = Sheet1.Cells(1, elem.Column).Value
-            destination = Trim(elem.Value)
+            tripDate = Sheet1.Cells(1, oneCell.Column).Value
+            destination = Trim(oneCell.Value)
             With Sheet3
                 .Cells(k, 1).Value = empName
                 .Cells(k, 2).Value = tripDate
