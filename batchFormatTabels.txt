@@ -19,4 +19,5 @@ Sub formatTableStyle()
         Set tb = Nothing
     Next
     Set tbls = Nothing
-End SubRem demo comments
+End Sub
+
